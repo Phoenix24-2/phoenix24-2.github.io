@@ -57,7 +57,7 @@ body {
 }
 
 .picture svg {
-  margin: 2rem auto;
+  margin: 2rem 1.5rem;
 }
 
 .text {
@@ -109,7 +109,7 @@ body {
 
 .subscription-form input,
 .subscription-form button {
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .subscription-form button {
@@ -128,31 +128,25 @@ body {
 
 /* Start of Error UI */
 
-input#email + span {
+input#email:invalid {
+  background-color: var(--color-error);
+  color: var(--color-primary-tomato);
+  border-color: var(--color-primary-tomato);
+  font-weight: 700;
+} 
+
+.subscription-form {
   position: relative;
 }
 
-/* input#email:invalid {
-  background-color: var(--color-error);
-  color: var(--color-primary-tomato);
-  border-color: var(--color-primary-tomato);
-  font-weight: 700;
-} */
-
-/* input#email:invalid + span::before {
-  background-color: var(--color-error);
-  color: var(--color-primary-tomato);
-  border-color: var(--color-primary-tomato);
-  font-weight: 700;
-
+input#email:invalid + span { 
   position: absolute;
-  content: "Valid email required";
-  font-size: 0.7rem;
   color: var(--color-primary-tomato);
+  font-size: .7rem;
   font-weight: 700;
-  right: 9px;
-  top: -89px;
-} */
+  right: 8px;
+  top: 2px;
+}
 
 /* End of Error UI */
 

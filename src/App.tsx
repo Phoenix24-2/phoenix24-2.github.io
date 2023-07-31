@@ -1,10 +1,29 @@
+import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
 import "./App.css";
 import { ReactComponent as IllustrationDesktop } from "./assets/images/illustration-sign-up-desktop.svg";
 import { ReactComponent as IconList } from "./assets/images/icon-list.svg";
 // import { ReactComponent as IllustrationMobile } from "./assets/images/illustration-sign-up-mobile.svg";
 // import { ReactComponent as IconSuccess } from "./assets/images/icon-success.svg";
 
-function App() {
+// *TODO: Design Mobile Version, Add Error UI, Success Page
+
+// React Hook Form
+
+type FormInputs = {
+  email: string;
+};
+
+export default function App() {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    control,
+  } = useForm<FormInputs>();
+
+  const onSubmit = (data: FormInputs) => console.log(data);
+
   return (
     <>
       <div className="wrapper">
@@ -32,18 +51,34 @@ function App() {
             </div>
           </div>
           <div className="subscribe">
-            <form action="" method="post" className="subscription-form">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              action=""
+              method="post"
+              className="subscription-form"
+              noValidate // Disable user-agent form validation And let React Hook Form do the validation.
+            >
               <label htmlFor="email">Email address</label>
               <input
                 type="email"
-                name="email"
                 id="email"
                 placeholder="email@company.com"
-                required
+                {...register("email", {
+                  // Add custom Email verification using React Form Hook
+                  // Take note of register function and its pattern attribute.
+                  pattern: {
+                    // Value actually is the Regex used to identify correct email.
+                    value:
+                      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+                    message: "Valid email required",
+                  },
+                })}
               />
-              <span></span>
+
+              <span> {errors?.email && errors.email.message} </span>
               <button type="submit">Subscribe to monthly newsletter</button>
             </form>
+            <DevTool control={control} />
           </div>
         </div>
 
@@ -58,5 +93,3 @@ function App() {
     </>
   );
 }
-
-export default App;
