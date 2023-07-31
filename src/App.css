@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root,
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-primary-tomato: hsl(4, 100%, 67%);
+  --color-Dark-Slate-Grey: hsl(234, 29%, 20%);
+  --color-Charcoal-Grey: hsl(235, 18%, 26%);
+  --color-Grey: hsl(231, 7%, 60%);
+  --color-White: hsl(0, 0%, 100%);
+  --color-error: rgba(255, 232, 232, 255);
+
+  --fontSize-h1: 2rem;
+
+  --form-element-border-radius: 8px;
+  --form-elemet-height: 45px;
+  --form-element-width: 360px;
+
+  color-scheme: light dark;
+  background-color: var(--color-Charcoal-Grey);
+  color: var(--color-Dark-Slate-Grey);
+
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-areas: "main";
+  place-items: center;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  border-radius: 20px;
+  background-color: var(--color-White);
+}
+
+.picture svg {
+  margin: 2rem auto;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  place-items: start;
+  margin: 1rem 1rem 2rem 3rem;
+}
+
+.text > h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.text > p {
+  margin-bottom: 2rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.list-item {
+  display: flex;
+  place-content: start;
+  gap: 0.7rem;
+}
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.subscription-form label {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.subscription-form input {
+  width: var(--form-element-width);
+  height: var(--form-elemet-height);
+  border-radius: var(--form-element-border-radius);
+  border: 0.2px solid var(--color-Charcoal-Grey);
+  text-indent: 1rem;
+}
+
+.subscription-form input,
+.subscription-form button {
+  margin-bottom: 1rem;
+}
+
+.subscription-form button {
+  background-color: var(--color-Dark-Slate-Grey);
+  color: var(--color-White);
+  border-radius: var(--form-element-border-radius);
+  border: 0;
+  width: calc(var(--form-element-width) + 0.4rem);
+  height: var(--form-elemet-height);
+}
+
+.subscription-form input:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+/* Start of Error UI */
+
+input#email + span {
+  position: relative;
+}
+
+/* input#email:invalid {
+  background-color: var(--color-error);
+  color: var(--color-primary-tomato);
+  border-color: var(--color-primary-tomato);
+  font-weight: 700;
+} */
+
+/* input#email:invalid + span::before {
+  background-color: var(--color-error);
+  color: var(--color-primary-tomato);
+  border-color: var(--color-primary-tomato);
+  font-weight: 700;
+
+  position: absolute;
+  content: "Valid email required";
+  font-size: 0.7rem;
+  color: var(--color-primary-tomato);
+  font-weight: 700;
+  right: 9px;
+  top: -89px;
+} */
+
+/* End of Error UI */
+
+.subscription-form button:hover {
+  cursor: pointer;
+  background-color: var(--color-primary-tomato);
+  box-shadow: 0 0 135 30 #ff6257;
+}
