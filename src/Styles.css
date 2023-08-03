@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+/* ------------------------------------------ Start of SignUpPage Styles ------------------------------------------  */
+
+:root,
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-primary-tomato: hsl(4, 100%, 67%);
+  --color-Dark-Slate-Grey: hsl(234, 29%, 20%);
+  --color-Charcoal-Grey: hsl(235, 18%, 26%);
+  --color-Grey: hsl(231, 7%, 60%);
+  --color-White: hsl(0, 0%, 100%);
+  --color-error: rgba(255, 232, 232, 255);
+
+  --fontSize-h1: 2rem;
+  --fontSize-h1-success: 4rem;
+
+  --wrapper-card-border-radius: 30px;
+  --form-element-border-radius: 7px;
+  --form-elemet-height: 45px;
+  --form-element-width: 360px;
+
+  --success-card-gap-elements: 1.8rem;
+
+  color-scheme: light dark;
+  background-color: var(--color-Charcoal-Grey);
+  color: var(--color-Dark-Slate-Grey);
+
+  box-sizing: border-box;
+
+  /* Much needed technique so that styling becomes much easier 
+     There is a default 8px margin and this way we eliminate that.
+  */
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  /* box-sizing was declared as border-box on :root (equivalent of :html)
+      so, declaring inherit here, makes the whole website (all elements inherit it)
+      so that we dont have to redclare it on each element. 
+  */
+  box-sizing: inherit;
+}
+
+#root {
+  /* For devices that don't support dvh */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-areas: "main";
+  place-items: center;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  border-radius: var(--wrapper-card-border-radius);
+  background-color: var(--color-White);
+}
+
+.picture svg {
+  margin: 2rem 1.5rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  place-items: start;
+  margin: 1rem 1rem 2rem 3rem;
+}
+
+.text > h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.text > p {
+  margin-bottom: 2rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.list-item {
+  display: flex;
+  place-content: start;
+  gap: 0.7rem;
+}
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.subscription-form label {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.subscription-form input {
+  width: var(--form-element-width);
+  height: var(--form-elemet-height);
+  border-radius: var(--form-element-border-radius);
+  border: 0.2px solid var(--color-Charcoal-Grey);
+  text-indent: 1rem;
+}
+
+.subscription-form input,
+.subscription-form button {
+  margin-bottom: 0.5rem;
+}
+
+.subscription-form input:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+.subscription-form button {
+  background-color: var(--color-Dark-Slate-Grey);
+  color: var(--color-White);
+  border-radius: var(--form-element-border-radius);
+  border: 0;
+  width: calc(var(--form-element-width) + 0.4rem);
+  height: var(--form-elemet-height);
+}
+
+.subscription-form button:hover {
+  cursor: pointer;
+  background-color: var(--color-primary-tomato);
+  box-shadow: 0 0 135 30 #ff6257;
+}
+
+/* Start of Error UI */
+
+.subscription-form {
+  position: relative;
+}
+
+input#email:invalid {
+  background-color: var(--color-error);
+  color: var(--color-primary-tomato);
+  border-color: var(--color-primary-tomato);
+  font-weight: 700;
+}
+input#email:valid + span {
+  display: none;
+}
+input#email:invalid + span {
+  visibility: visible;
+  position: absolute;
+  color: var(--color-primary-tomato);
+  font-size: 0.7rem;
+  font-weight: 700;
+  right: 8px;
+  top: 2px;
+}
+
+/* End of Error UI */
+
+/* ------------------------------------------ End of SignUpPage Styles ------------------------------------------  */
+
+/* ------------------------------------------ Start of SuccessPage Styles ------------------------------------------  */
+
+.success-card {
+  background-color: var(--color-White);
+  border-radius: var(--wrapper-card-border-radius);
+  width: clamp(15rem, 27rem, 30rem);
+}
+
+.card-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--success-card-gap-elements);
+  margin: 0 4rem;
+}
+
+.card-content > h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.card-content > p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4rem;
+}
+.card-content > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: var(--color-Dark-Slate-Grey);
+    color: var(--color-White);
+    height: var(--form-elemet-height);
+    border-radius: var(--form-element-border-radius);
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .card-content > a:hover {
+    cursor: pointer;
+    background-color: var(--color-primary-tomato);
+    box-shadow: 0 0 135 30 #ff6257;
+  }
+
+.card-content > p > span {
+  font-weight: 700;
+}
+
+.picture-success {
+  margin-top: var(--success-card-gap-elements);
+}
+
+.picture-success svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* ------------------------------------------ End of SignUpPage Styles ------------------------------------------  */
+
+/* ------------------------------------------ Start of SignUpPage Styles / Mobile Version ------------------------------------------  */
+@media only screen and (max-width: 460px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-flow: column-reverse;
+    gap: 2rem;
+    min-width: 100dw;
+    min-width: 100dvw;
+    min-height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+  }
+
+  .picture {
+    margin-bottom: 2rem;
+  }
+  .picture svg {
+    margin: 0 auto;
+    margin-right: 0.4rem;
+    transform: scale(1.14, 1.1);
+  }
+
+  .text {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .text > h1 {
+    margin-left: -0.1rem;
+    font-size: calc(var(--fontSize-h1) + 0.5rem);
+  }
+
+  .subscription-form > * {
+    font-weight: 700;
+  }
+
+  .subscription-form {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ------------------------------------------ End of SignUpPage Styles / Mobile Version ------------------------------------------  */
+
+/* ------------------------------------------ Start of SuccessPage Styles / Mobile Version ------------------------------------------  */
+
+@media only screen and (max-width: 460px) {
+  #root {
+    background-color: var(--color-White);
+  }
+
+  .success-card {
+    width: 100%;
+  }
+
+  .card-content {
+    margin: 10rem 1rem 1rem 1rem;
+  }
+
+  .card-content > p {
+    margin-bottom: 18rem;
+  }
+
+  .dismiss-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: var(--color-Dark-Slate-Grey);
+    color: var(--color-White);
+    height: var(--form-elemet-height);
+    border-radius: var(--form-element-border-radius);
+    font-weight: 700;
+  }
+
+  .picture-success {
+    margin: 0;
+  }
+
+  .picture-success svg {
+    transform: scale(1.5);
+    margin-bottom: 1rem;
+    margin-left: 0.6rem;
+  }
+}
+
+/* ------------------------------------------ End of SuccessPage Styles / Mobile Version ------------------------------------------  */
