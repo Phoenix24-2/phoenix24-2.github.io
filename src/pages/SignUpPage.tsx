@@ -4,8 +4,6 @@ import { ReactComponent as IconList } from "../assets/images/icon-list.svg";
 import "../Styles.css";
 import { Form } from "react-router-dom";
 
-console.log(window.innerWidth);
-
 export default function SignUpPage() {
   // Determines which svg to render based on device viewport width.
   function SVGPicker() {
@@ -43,7 +41,7 @@ export default function SignUpPage() {
             </div>
           </div>
           <div className="subscribe">
-            {/* //* Redirect to another component by form's acrtion props and also Route's action props together. */}
+            {/* //* Redirect to another component by form's action props and also Route's action props together. */}
             {/* //* Since form's action string is the same as Route's path prop, form is submitted to the same Route . */}
             {/* //* And on the Route element on main.tsx file, use action prop function to specify what happens when form gets submitted. (Refrence : https://reactrouter.com/en/main/route/action) */}
             {/* //* In this case, we used formData method and request to get form data that was sent to action prop of Route.Then we redirected using redirect method. */}
