@@ -18,13 +18,13 @@ const router = createBrowserRouter(
         path="/"
         element={<SignUpPage />}
         // ** This is the action prop, mentioned on SignUpPage.tsx
-        action={async ({ params, request }) => {
+        action={async ({ request }) => {
           const formData = await request.formData(); // Got formData method from here : https://reactrouter.com/en/main/route/action#action
-          const email = formData.get("email"); // User Input Email
+          let email = formData.get("email"); // User Input Email
+          email = email?.toString()!;
           const regex =
             /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-          if (regex.test(email.toString()!)) {
-            console.log(params);
+          if (regex.test(email)) {
             // if user input email validates according to regex, redirect to SuccessPage.tsx
             return redirect(`/success/${email}`);
           } else {
